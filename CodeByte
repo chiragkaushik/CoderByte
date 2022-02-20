@@ -1,0 +1,98 @@
+/*
+Data base design
+
+User Table
+email(Primary Key)
+first_name
+last_name
+address
+DOB
+
+
+
+Service Table
+User(Foreign Key)
+service_type
+booking_date
+delivery_date
+
+*/
+
+
+
+placeOrder API (POST Request)
+
+class PlaceOrder(request):
+	def serilizer(self, data):
+  	// Call to Serializer for validating request data. (Not writing serializer code due to time containts)
+    
+	def post(self, request):
+		data = request.body
+  	// Validate request data using serializer
+    serilizer = self.serializer(data)
+    
+    if serilizer.is_valid:
+    	// 1. Find out the time at which we can give service to user
+      // 2. Store the details of order in DB
+      // 3. Return the scheduled time to user in Response. (Response code will be 200)
+      
+      return Response(data=order_details, status=200)
+    else
+    	// Log the Error. Logging errors helps in debuggint the issue easier
+    	// Raise Validation Error and return errors in response (Response code will be 400)
+      return Response(data=serialize.errors, status=400)
+  
+
+  
+getMyOrders API 
+
+class GetMyOrders():
+	def serilizer(self, data):
+  	// Call to Serializer for validating request data. (Not writing serializer code due to time containts)
+    
+	def get(self, request):
+  	data = request.body
+    // Validate request data using serializer
+    serialize = self.serializer(data)
+    
+    if serilizer.is_valid:
+    	// 1. Get order details from DB
+      // 2. Return these details in API Response
+      
+    	order_details = HelperMethods.get_order_details(user);
+      return Response(data=order_details, status=200)
+    else
+    	// Log the Error. Logging errors helps in debuggint the issue easier
+    	// Raise Validation Error and return errors in response (Response code will be 400)
+      return Response(data=serialize.errors, status=400)
+
+
+
+class HelperMethods:
+	@static_method
+  def get_order_details(user):
+  	order_details = {}
+  	orders = Service.object.filter(user=user)
+    
+    for(order in orders):
+    	order_details[service_type] = service_type
+      order_details[booking_date] = booking_date
+      order_details[delivery_date] = delivery_date
+      
+    return order_details
+    
+  @static_method
+  def get_deleviry_time(service_details):
+  	// 1. Figure out the time at which we can deliver service to user and return the time at which service can be given.
+    // Not writing this code because it will involve figuring out data of delivery agent which is out of scope for this solution.
+    return delivery_time
+    
+    
+  def schedule_service(user, order_detials):
+  	return Service.objects.create(User=user, service_type=order_detials['service_type'], booking_date=order_detials['booking_date'], delivery_date=order_detials['delivery_date'])
+    
+  
+    
+      
+    	
+
